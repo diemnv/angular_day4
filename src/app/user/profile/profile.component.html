@@ -1,0 +1,87 @@
+<h1 style="text-align: center; padding: 50px 0">Angular template driven form</h1>
+<form novalidate (ngSubmit)="onSubmit(form)" class="row justify-content-md-center" #form="ngForm">
+  <div class="col-md-8">
+    <div class="form-group row">
+      <label for="example-text-input" class="col-md-2 col-form-label">Name:</label>
+      <div class="col-md-10">
+        <input [ngModel]="contact.contactName" class="form-control" type="text" id="example-text-input" name="contactName"
+          required minlength="5">
+      </div>
+    </div>
+    <div *ngIf="form.controls.contactName?.invalid && form.controls.contactName?.touched" class="alert alert-danger">
+      <ng-container *ngIf="form.controls.contactName.errors['required']">
+        contact name is required
+      </ng-container>
+      <ng-container *ngIf="form.controls.contactName.errors['minlength']">
+        Min length {{form.controls.contactName.errors['minlength'].requiredLength}}
+      </ng-container>
+    </div>
+    <div class="form-group row">
+      <label for="example-email-input" class="col-md-2 col-form-label">Email:</label>
+      <div class="col-md-10">
+        <input [ngModel]="contact.email" class="form-control" type="email" id="example-email-input" name="email"
+          required email>
+      </div>
+    </div>
+    <div *ngIf="form.controls.email?.invalid && form.controls.email?.touched" class="alert alert-danger">
+      <ng-container *ngIf="form.controls.email.errors['required']">
+        Email is required
+      </ng-container>
+      <ng-container *ngIf="form.controls.email.errors['email']">
+        Email is invalid
+      </ng-container>
+    </div>
+    <div class="form-group row">
+      <label for="example-url-fb" class="col-md-2 col-form-label">Facebook:</label>
+      <div class="col-md-10">
+        <input [ngModel]="contact.facebook" class="form-control" type="url" id="example-url-fb" name="facebook"
+          required>
+      </div>
+    </div>
+    <div *ngIf="form.controls.facebook?.invalid && form.controls.facebook?.touched" class="alert alert-danger">
+      <ng-container *ngIf="form.controls.facebook.errors['required']">
+        Facebook is required
+      </ng-container>
+    </div>
+    <div class="form-group row">
+      <label for="example-url-twt" class="col-md-2 col-form-label">Twitter:</label>
+      <div class="col-md-10">
+        <input [ngModel]="contact.twitter" class="form-control" type="url" id="example-url-twt" name="twitter" required>
+      </div>
+    </div>
+    <div *ngIf="form.controls.twitter?.invalid && form.controls?.touched" class="alert alert-danger">
+      <ng-container *ngIf="form.controls.twitter.errors['required']">
+        Twitter is required
+      </ng-container>
+    </div>
+    <div class="form-group row">
+      <label for="example-url-web" class="col-md-2 col-form-label">Website:</label>
+      <div class="col-md-10">
+        <input [ngModel]="contact.website" class="form-control" type="url" id="example-url-web" name="website" required>
+      </div>
+    </div>
+    <div *ngIf="form.controls.website?.invalid && form.controls.website?.touched" class="alert alert-danger">
+      <ng-container *ngIf="form.controls.website.errors['required']">
+        Website is required
+      </ng-container>
+    </div>
+    <div class="form-group row">
+      <label for="example-tel-input" class="col-md-2 col-form-label">Tel:</label>
+      <div class="col-md-10">
+        <input [ngModel]="contact.tel" class="form-control" type="tel" id="example-tel-input" name="phone" required>
+      </div>
+    </div>
+    <div *ngIf="form.controls.tel?.invalid && form.controls.tel?.touched">
+      <ng-container *ngIf="form.controls.Telephone.errors['required']">
+        Telephone is required
+      </ng-container>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-10 offset-md-2">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>
+<p>Form value:</p>
+<pre>{{ form.value | json }}</pre>
