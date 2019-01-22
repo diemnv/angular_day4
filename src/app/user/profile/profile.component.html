@@ -5,14 +5,14 @@
       <label for="example-text-input" class="col-md-2 col-form-label">Name:</label>
       <div class="col-md-10">
         <input [ngModel]="contact.contactName" class="form-control" type="text" id="example-text-input" name="contactName"
-          required minlength="5">
+          required minlength="5" #contactName="ngModel">
       </div>
     </div>
-    <div *ngIf="form.controls.contactName?.invalid && form.controls.contactName?.touched" class="alert alert-danger">
-      <ng-container *ngIf="form.controls.contactName.errors['required']">
+    <div *ngIf="contactName?.invalid && contactName?.touched" class="alert alert-danger">
+      <ng-container *ngIf="contactName?.errors['required']">
         contact name is required
       </ng-container>
-      <ng-container *ngIf="form.controls.contactName.errors['minlength']">
+      <ng-container *ngIf="contactName?.errors['minlength']">
         Min length {{form.controls.contactName.errors['minlength'].requiredLength}}
       </ng-container>
     </div>
